@@ -23,10 +23,12 @@ class Battle:
         while self.character_one.health > 0 and self.character_two.health > 0:
             self.character_one.decrement_health(
                 self.character_two.random_attack()["damage"])
+            print(self.character_one.name + "'s turn!" + ' Damage sustained: ')
             print(self.character_one.health)
             self.character_two.decrement_health(
-                self.character_one.random_attack()["damage"])
+                self.character_one.random_attack()['damage'])
+            print(self.character_two.name + "'s turn!" + ' Damage sustained: ')
             print(self.character_two.health)
 
-        print(self.character_one.name if self.character_one.health >
-              0 else self.character_two.name + 'Wins!')
+        print(self.character_one.name + ' Wins!!!' if self.character_one.health >
+              0 else self.character_two.name + ' Wins!!!')

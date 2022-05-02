@@ -24,7 +24,6 @@ def game():
         selected = random.choice(characters)
     print('You have chosen ' + selected)
     player = find_character(selected)
-    print(player)
 
     enemy = random.choice(characters)
 
