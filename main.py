@@ -1,6 +1,6 @@
 import random
 import json
-import character
+from smash import Battle, Character
 
 characters = []
 
