@@ -8,7 +8,7 @@ characters = []
 def ask_for_input(user_input):
     while True:
         # try:
-        user_input = input('Select a player from above: ')
+        user_input = input('Select a player from above by enter their number: ')
         if user_input == '':
             user_input = random.randrange(0, 57)
             print(f"random character is {characters[user_input].get('name')}")
