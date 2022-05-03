@@ -6,13 +6,18 @@ from threading import Timer
 characters = []
 
 def ask_for_input(user_input):
-    while not (int(user_input) >= 0 and int(user_input) <= 58):
-        try:
-        
-            user_input = int(input('Select a player from above: '))
-        except ValueError:
-            print('Integer only')
-    return user_input if user_input != 58 else random.randrange(0, 57)
+    while True:
+        # try:
+        user_input = input('Select a player from above: ')
+        if user_input == '':
+            user_input = random.randrange(0, 57)
+            print(f"random character is {characters[user_input].get('name')}")
+            return user_input
+        elif int(user_input) >= 0 and int(user_input) <= 57:
+            return int(user_input)
+        else:
+            ask_for_input(user_input)
+
 
 def random_computer():
     random_computer = random.randrange(0, 57)
@@ -38,8 +43,7 @@ def main():
     
     for char in enumerate(characters):
         print((str(char[0]) + " " + char[1].get('name')))
-    print("58 Random character")
-    print('You have 10 second to choose a character')
+    print("Press enter for Random character")
 
     user_input = ask_for_input(user_input)
     
