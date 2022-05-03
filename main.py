@@ -35,39 +35,41 @@ def game():
         comp.append(random_character["name"])
         comp.append(random_character["attacks"])
 
+
+    
     character1 = smash.Character(player[0], player[1])
     character2 = smash.Character(comp[0], comp[1])
 
-    print(character1.moves[random.choice(range(0,len(character1.moves)))]["name"])
-    print(character1.moves[random.choice(range(0,len(character1.moves)))]["damage"])
+    start = smash.Battle(character1, character2)
 
-    while not winner:
-        random_move = random.choice(range(0,len(character1.moves)))
+    if start.start:
+        while not winner:
+            random_move = character1.select_move()
 
-        print('{name} used {move} dealing {damage} damage.'.format(name = character1.name, move = character1.moves[random_move]["name"], damage = character1.moves[random_move]["damage"]))
-        character2.decrease_health(character1.moves[random_move]["damage"])
-        print('{name} life points: {health}'.format(name = character2.name, health = character2.health))      
+            print('{name} used {move} dealing {damage} damage.'.format(name = character1.name, move = random_move["name"], damage = random_move["damage"]))
+            character2.decrease_health(random_move["damage"])
+            print('{name} life points: {health}'.format(name = character2.name, health = character2.health))      
 
-        if character2.health <= 0:
-            winner = True
+            if character2.health <= 0:
+                winner = True
 
-        random_move = random.choice(range(0,len(character2.moves))) 
-        print('{name} used {move} dealing {damage} damage.'.format(name = character2.name, move = character2.moves[random_move]["name"], damage = character2.moves[random_move]["damage"]))  
-        character1.decrease_health(character2.moves[random_move]["damage"])
-        print('{name} life points: {health}'.format(name = character1.name, health = character1.health))
+            random_move = character2.select_move()
+            print('{name} used {move} dealing {damage} damage.'.format(name = character2.name, move = random_move["name"], damage = random_move["damage"]))  
+            character1.decrease_health(random_move["damage"])
+            print('{name} life points: {health}'.format(name = character1.name, health = character1.health))
 
-        if character1.health <= 0:
-            winner = True
+            if character1.health <= 0:
+                winner = True
 
-    if character2.health > 0:
-        # comp_score += 1
-        print('Winner: {name}'.format(name = character2.name))    
-        return 2
+        if character2.health > 0:
+            print('Winner: {name}'.format(name = character2.name))    
+            return 2
 
-    if character1.health > 0:
-        # player_score += 1
-        print('Winner: {name}'.format(name = character1.name))
-        return 1
+        if character1.health > 0:
+            print('Winner: {name}'.format(name = character1.name))
+            return 1
+    else:
+        print("Missing a character.")
 
 
 while replay:
