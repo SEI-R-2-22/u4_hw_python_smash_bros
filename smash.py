@@ -3,19 +3,20 @@ import json
 
 
 class Battle:
-    def __init__(self):
-        pass
+    def __init__(self, PC, CPU):
+        self.PC = PC
+        self.CPU = CPU
 
 
 class Character:
     def __init__(self, name):
         self.name = name
-        self.health = 100
+        self.hp = 100
         self.attacks = []
 
     def decrement_health(self, attrition):
-        self.health -= attrition
-        return self.health
+        self.hp -= attrition
+        return self.hp
 
     def attacks(self):
         return random.choice(self.attacks)
