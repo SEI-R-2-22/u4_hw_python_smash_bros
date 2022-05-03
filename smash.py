@@ -18,4 +18,4 @@ class Character:
         return self.health
 
     def attacks(self):
-        self.random.attacks
+        return random.choice(self.attacks)
