@@ -17,6 +17,8 @@ def game():
     for character in characters:
         if character["name"] == champion or character["name"].lower() == champion:
             person = character
+        else:
+            person = random.choice(characters)
 
     computer = random.choice(characters)
 
