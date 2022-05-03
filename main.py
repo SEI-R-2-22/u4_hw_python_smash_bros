@@ -19,14 +19,14 @@ def game():
     time.sleep(1)
     for character in characters:
         print(character["name"])
-        char_names.append(character["name"])
-    chooseChar = input('Choose your character: ')
+        char_names.append(character["name"].lower())
+    chooseChar = input('Choose your character: ').lower()
     time.sleep(0.5)
     if chooseChar in char_names:
         for character in characters:
-            if chooseChar == character["name"]:
+            if chooseChar == character["name"].lower():
                 player_char = character
-                print('You choose: ' + str(character["name"]))
+                print('You chose: ' + str(character["name"]))
             else:
                 None
     else:
