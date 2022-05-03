@@ -1,5 +1,6 @@
 import random
 import json
+import time
 from smash import Character, Battle
 
 characters = []
@@ -12,10 +13,15 @@ with open('characters.json') as json_file:
 
 
 def game():
+    print('Welcome to Smash Bros!')
+    time.sleep(0.5)
+    print('List of playable characters incoming...')
+    time.sleep(1)
     for character in characters:
         print(character["name"])
         char_names.append(character["name"])
     chooseChar = input('Choose your character: ')
+    time.sleep(0.5)
     if chooseChar in char_names:
         for character in characters:
             if chooseChar == character["name"]:
@@ -27,16 +33,18 @@ def game():
         player_char = random.choice(characters)
         print('Invalid choice, ' +
               str(player_char["name"]) + ' has been chosen for you.')
-    print('Player Char', player_char)
+    time.sleep(0.5)
     nme_char = random.choice(characters)
     print('Your opponent is: ' + nme_char["name"])
-    print('NME Char', nme_char)
 
-    player = Character(player_char["name"], 50, player_char["attacks"])
-    computer = Character(nme_char["name"], 50, nme_char["attacks"])
+    player = Character(player_char["name"], 25, player_char["attacks"])
+    computer = Character(nme_char["name"], 25, nme_char["attacks"])
 
     new_game = Battle(player, computer)
-    # new_game.fight()
+    new_game.fight()
+    time.sleep(1)
+    replay = input('Play again? (y/n) ').lower()
+    game() if (replay == 'y' or replay == 'yes') else quit()
 
 
 game()
