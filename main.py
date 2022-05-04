@@ -28,31 +28,31 @@ def game():
 
     print("-----------------------------------------------------------------------------------------------------------")
 
-    if(player_character.health == 0):
-        print(f'{opponent} wins!')
-    elif(opponent.health == 0):
-        print(f'{player_character} wins!')
-    else:
-        
-        def player_attack():
-            print(f'{player_character.name} attacks!')
-            player_attack = player_character.rand_move()
-            print(player_attack)
-            opponent.health_bar(player_attack['damage'])
-            print(f'Opponent health: {opponent.health}')
+    def player_attack():
+        print(f'{player_character.name} attacks!')
+        player_attack = player_character.rand_move()
+        print(player_attack)
+        opponent.health_bar(player_attack['damage'])
+        print(f'Opponent health: {opponent.health}')
 
         print("-----------------------------------------------------------------------------------------------------------")
 
-        def opponent_attack():
-            print(f'{opponent.name} attacks back!')
-            opponent_attack = opponent.rand_move()
-            print(opponent_attack)
-            player_character.health_bar(opponent_attack['damage'])
-            print(f'Player health: {player_character.health}')
+    def opponent_attack():
+        print(f'{opponent.name} attacks back!')
+        opponent_attack = opponent.rand_move()
+        print(opponent_attack)
+        player_character.health_bar(opponent_attack['damage'])
+        print(f'Player health: {player_character.health}')
 
         print("-----------------------------------------------------------------------------------------------------------")
 
+    while((player_character.health > 0) and (opponent.health > 0)):
         player_attack()
         opponent_attack()
+    
+    if(player_character.health <= 0):
+        print(f'{player_character.name} loses!')
+    else:
+        print(f'{player_character.name} wins!')
 
 game()

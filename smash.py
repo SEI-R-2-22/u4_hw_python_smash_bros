@@ -10,7 +10,7 @@ class Character:
         self.health = int(self.health - int(attack))
     
     def rand_move(self):
-        index = random.randint(0, len(self.moves))
+        index = random.randint(0, len(self.moves) - 1)
         return self.moves[index]
 
 class Battle:
