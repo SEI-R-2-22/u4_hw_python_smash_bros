@@ -32,7 +32,7 @@ def start_game():
 
         start = smash.Battle(character1, character2)
 
-        if start.start:
+        if start:
             while not winner:
                 random_move = character1.choose_move()
 
